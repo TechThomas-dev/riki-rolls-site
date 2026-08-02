@@ -412,6 +412,61 @@
   .box-showcase .cap .label{color:var(--gold); display:block; margin-bottom:4px;}
   .box-showcase .cap .desc{color:var(--washi-dim); font-size:0.85rem;}
 
+  .contents{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:2px;
+    background:var(--panel-line);
+    border:1px solid var(--panel-line);
+    margin-bottom:64px;
+  }
+  .contents.single{
+    grid-template-columns:1fr;
+    max-width:440px;
+    margin:0 auto;
+  }
+  .contents .col{
+    background:var(--panel);
+    padding:32px 30px;
+  }
+  .contents .col h4{
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    color:var(--gold);
+    font-size:0.82rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    margin-bottom:18px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--panel-line);
+  }
+  .contents .col ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+  }
+  .contents .col li{
+    color:var(--washi);
+    font-size:0.94rem;
+    line-height:1.4;
+  }
+  .contents .col li .num{
+    color:var(--gold);
+    font-weight:700;
+    margin-right:8px;
+  }
+  .contents .col li .sub{
+    color:var(--washi-dim);
+    font-size:0.85rem;
+  }
+
+  @media (max-width:820px){
+    .contents{grid-template-columns:1fr;}
+  }
+
   .banner-photo{
     position:relative;
     border:1px solid var(--panel-line);
@@ -778,6 +833,40 @@
       </div>
     </div>
 
+    <div class="section-head" style="margin:0 auto 32px; text-align:center;">
+      <p class="label eyebrow" style="margin-bottom:8px;">What's In The Box</p>
+      <h2 style="font-size:clamp(1.6rem, 3vw, 2.1rem);">Base game contents</h2>
+    </div>
+
+    <div class="contents">
+      <div class="col">
+        <h4>Miniatures &amp; Terrain</h4>
+        <ul>
+          <li><span class="num">11</span>Unique Daimyō</li>
+          <li><span class="num">17</span>Unique Units</li>
+          <li><span class="num">4</span>Castles</li>
+          <li><span class="num">2</span>Ships</li>
+          <li><span class="num">74</span>Hexagon Tiles</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Cards &amp; Tokens</h4>
+        <ul>
+          <li>Dedicated Unit Cards<br><span class="sub">Every Daimyō, Ship &amp; Unit</span></li>
+          <li>Destiny Card Deck</li>
+          <li>Gold &amp; Honor Tokens</li>
+          <li><span class="num">6</span>Dice</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Rulebooks &amp; Guides</h4>
+        <ul>
+          <li>The Official Rulebook</li>
+          <li>The Shogun's Atlas<br><span class="sub">Map Layout Guide</span></li>
+        </ul>
+      </div>
+    </div>
+
     <div class="seal-grid">
       <div class="seal-card">
         <div class="seal-stamp">将</div>
@@ -888,6 +977,24 @@
         <span class="label">New to the campaign</span>
         <h3>Mounted matchlocks, warrior monks, and two more strongholds to claim.</h3>
       </div>
+
+    <div class="section-head" style="margin:56px auto 32px; text-align:center;">
+      <p class="label eyebrow" style="margin-bottom:8px;">What's In The Expansion</p>
+      <h2 style="font-size:clamp(1.6rem, 3vw, 2.1rem);">Expansion contents</h2>
+    </div>
+
+    <div class="contents single">
+      <div class="col">
+        <h4>Warrior Monks &amp; Mounted Matchlocks</h4>
+        <ul>
+          <li><span class="num">14</span>Extra Hex Tiles</li>
+          <li><span class="num">2</span>New Daimyō</li>
+          <li><span class="num">2</span>New Units</li>
+          <li><span class="num">2</span>Castles</li>
+          <li>The Grand Atlas of Japan</li>
+        </ul>
+      </div>
+    </div>
     </div>
   </div>
 </section>
