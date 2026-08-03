@@ -1365,18 +1365,18 @@ document.getElementById('year').textContent = new Date().getFullYear();
     camera.position.set(0, 0.15, 1.8);
     scene.add(camera);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 2.2));
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x4a4038, 2.2));
-    const dir = new THREE.DirectionalLight(0xffffff, 3.2);
+    scene.add(new THREE.AmbientLight(0xffffff, 1.0));
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x4a4038, 1.0));
+    const dir = new THREE.DirectionalLight(0xffffff, 1.4);
     dir.position.set(2, 3, 2);
     scene.add(dir);
-    const dir2 = new THREE.DirectionalLight(0xffffff, 2.2);
+    const dir2 = new THREE.DirectionalLight(0xffffff, 0.9);
     dir2.position.set(-2, 1, -2);
     scene.add(dir2);
-    const dir3 = new THREE.DirectionalLight(0xffffff, 1.8);
+    const dir3 = new THREE.DirectionalLight(0xffffff, 0.7);
     dir3.position.set(0, -2, 1);
     scene.add(dir3);
-    const camLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    const camLight = new THREE.DirectionalLight(0xffffff, 0.8);
     camLight.position.set(0, 0, 1);
     camera.add(camLight);
 
@@ -1407,12 +1407,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
         if(child.isMesh){
           child.geometry.computeVertexNormals();
           child.material = new THREE.MeshStandardMaterial({
-            color: 0xd8d2c6,
-            roughness: 0.6,
-            metalness: 0.03,
+            color: 0x9a9a9a,
+            roughness: 0.7,
+            metalness: 0.05,
             side: THREE.DoubleSide,
-            emissive: 0x1a1512,
-            emissiveIntensity: 0.25
+            emissive: 0x0a0a0a,
+            emissiveIntensity: 0.08
           });
         }
       });
