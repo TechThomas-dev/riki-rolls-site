@@ -1365,20 +1365,14 @@ document.getElementById('year').textContent = new Date().getFullYear();
     camera.position.set(0, 0.15, 1.8);
     scene.add(camera);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 1.0));
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x4a4038, 1.0));
-    const dir = new THREE.DirectionalLight(0xffffff, 1.4);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x4a4038, 0.5));
+    const dir = new THREE.DirectionalLight(0xffffff, 0.9);
     dir.position.set(2, 3, 2);
     scene.add(dir);
-    const dir2 = new THREE.DirectionalLight(0xffffff, 0.9);
+    const dir2 = new THREE.DirectionalLight(0xffffff, 0.35);
     dir2.position.set(-2, 1, -2);
     scene.add(dir2);
-    const dir3 = new THREE.DirectionalLight(0xffffff, 0.7);
-    dir3.position.set(0, -2, 1);
-    scene.add(dir3);
-    const camLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    camLight.position.set(0, 0, 1);
-    camera.add(camLight);
 
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableZoom = false;
