@@ -1405,7 +1405,15 @@ document.getElementById('year').textContent = new Date().getFullYear();
       model.rotation.x = -Math.PI / 2;  // source models are Z-up, Three.js is Y-up
       model.traverse(function(child){
         if(child.isMesh){
-          child.material = new THREE.MeshStandardMaterial({color: 0xd8d2c6, roughness: 0.6, metalness: 0.03});
+          child.geometry.computeVertexNormals();
+          child.material = new THREE.MeshStandardMaterial({
+            color: 0xd8d2c6,
+            roughness: 0.6,
+            metalness: 0.03,
+            side: THREE.DoubleSide,
+            emissive: 0x1a1512,
+            emissiveIntensity: 0.25
+          });
         }
       });
       scene.add(model);
