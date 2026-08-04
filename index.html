@@ -1356,12 +1356,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
     camera.position.set(0, 0.15, 1.8);
     scene.add(camera);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x4a4038, 0.5));
-    const dir = new THREE.DirectionalLight(0xffffff, 0.9);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x4a4038, 0.35));
+    const dir = new THREE.DirectionalLight(0xffffff, 0.65);
     dir.position.set(2, 3, 2);
     scene.add(dir);
-    const dir2 = new THREE.DirectionalLight(0xffffff, 0.35);
+    const dir2 = new THREE.DirectionalLight(0xffffff, 0.25);
     dir2.position.set(-2, 1, -2);
     scene.add(dir2);
 
@@ -1392,12 +1392,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
         if(child.isMesh){
           child.geometry.computeVertexNormals();
           child.material = new THREE.MeshStandardMaterial({
-            color: 0x9a9a9a,
-            roughness: 0.7,
-            metalness: 0.05,
+            color: 0x808080,
+            roughness: 0.75,
+            metalness: 0.04,
             side: THREE.DoubleSide,
-            emissive: 0x0a0a0a,
-            emissiveIntensity: 0.08
+            emissive: 0x000000,
+            emissiveIntensity: 0
           });
         }
       });
