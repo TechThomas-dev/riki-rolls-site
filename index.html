@@ -1390,6 +1390,9 @@ document.getElementById('year').textContent = new Date().getFullYear();
     loader.parse(buffer, '', function(gltf){
       const model = gltf.scene;
       model.rotation.x = -Math.PI / 2;  // source models are Z-up, Three.js is Y-up
+      // shift models that sit too high in the frame
+      var yOffsets = {bear: -0.18, namahage: -0.18, castle: -0.18, odzutsu: -0.18};
+      if(yOffsets[modelKey] !== undefined) model.position.y = yOffsets[modelKey];
       model.traverse(function(child){
         if(child.isMesh){
           child.geometry.computeVertexNormals();
