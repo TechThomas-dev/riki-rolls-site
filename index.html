@@ -1372,17 +1372,16 @@ document.getElementById('year').textContent = new Date().getFullYear();
     controls.enablePan = false;
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
-    controls.autoRotate = !reduceMotion;
-    controls.autoRotateSpeed = 2.2;
+    controls.autoRotate = false; // we drive rotation manually for sync
 
+    let userInteracting = false;
     let resumeTimer;
     controls.addEventListener('start', function(){
-      controls.autoRotate = false;
+      userInteracting = true;
       clearTimeout(resumeTimer);
     });
     controls.addEventListener('end', function(){
-      if(reduceMotion) return;
-      resumeTimer = setTimeout(function(){ controls.autoRotate = true; }, 2500);
+      resumeTimer = setTimeout(function(){ userInteracting = false; }, 2500);
     });
 
     const loader = new THREE.GLTFLoader();
@@ -1390,8 +1389,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
     loader.parse(buffer, '', function(gltf){
       const model = gltf.scene;
       model.rotation.x = -Math.PI / 2;  // source models are Z-up, Three.js is Y-up
-      // shift models that sit too high in the frame
-      var yOffsets = {bear: -0.18, namahage: -0.18, castle: -0.18, odzutsu: -0.18};
+      // shift models within their canvas frame
+      var yOffsets = {ronin: -0.1, bear: -0.18, namahage: -0.18, castle: -0.18, odzutsu: -0.18};
       if(yOffsets[modelKey] !== undefined) model.position.y = yOffsets[modelKey];
       model.traverse(function(child){
         if(child.isMesh){
@@ -1429,6 +1428,15 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
     function animate(){
       requestAnimationFrame(animate);
+      if(!reduceMotion && !userInteracting){
+        // drive azimuth from a shared global clock so all models rotate in sync
+        var angle = (Date.now() * 0.00038) % (Math.PI * 2);
+        controls.minAzimuthAngle = angle;
+        controls.maxAzimuthAngle = angle;
+      } else {
+        controls.minAzimuthAngle = -Infinity;
+        controls.maxAzimuthAngle = Infinity;
+      }
       controls.update();
       renderer.render(scene, camera);
     }
